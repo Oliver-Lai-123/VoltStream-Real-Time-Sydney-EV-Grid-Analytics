@@ -7,6 +7,7 @@ from botocore.config import Config
 from dotenv import load_dotenv
 import snowflake.connector # Add this at the top!
 import tempfile            # Built-in Python library
+import random
 
 # Load credentials from your .env file
 load_dotenv()
@@ -50,16 +51,24 @@ def get_sydney_ev_data():
     
     # Python Mapping Layer: Transform Open Charge Map schema to VoltStream schema
     for station in raw_data:
-        # Safely extract kW output (some stations don't list it)
+        # Safely extract kW output
         kw = 0
         if station.get("Connections") and len(station["Connections"]) > 0:
-            kw = station["Connections"][0].get("PowerKW", 0) or 0
+            kw = station["Connections"][0].get("PowerKW", 0) or 22
             
-        # Map fields so Snowflake doesn't break
+        # Simulate Live Telemetry: If operational, give it a 40% chance of being in use
+        is_operational = station.get("StatusType", {}).get("IsOperational")
+        if is_operational:
+            # Randomly assign 'CHARGING' to simulate active load
+            live_status = random.choices(["AVAILABLE", "CHARGING"], weights=[60, 40])[0]
+        else:
+            live_status = "OFFLINE"
+            
+        # Map fields
         mapped_station = {
             "station_id": f"OCM-{station.get('ID')}",
             "suburb": station.get("AddressInfo", {}).get("Town", "Unknown"),
-            "status": "AVAILABLE" if station.get("StatusType", {}).get("IsOperational") else "OFFLINE",
+            "status": live_status,
             "kw_output": int(kw),
             "timestamp": datetime.now().isoformat()
         }

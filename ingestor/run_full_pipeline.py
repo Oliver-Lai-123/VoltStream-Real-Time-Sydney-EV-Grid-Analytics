@@ -36,7 +36,7 @@ def run_step_1_ingest():
             "station_id": f"OCM-{s.get('ID')}",
             "suburb": s.get("AddressInfo", {}).get("Town", "Unknown"),
             "status": "AVAILABLE" if s.get("StatusType", {}).get("IsOperational") else "OFFLINE",
-            "kw_output": int(s.get("Connections", [{}])[0].get("PowerKW", 0) or 0),
+            "kw_output": int(s.get("Connections", [{}])[0].get("PowerKW", 0) or 22),
             "timestamp": datetime.now().isoformat()
         } for s in raw_data
     ]
