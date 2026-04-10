@@ -1,0 +1,34 @@
+# ========================
+# VOLTSTREAM .GITIGNORE
+# ========================
+
+# 1. Credentials & Secrets (CRITICAL)
+**/.env
+profiles.yml
+*.pem
+*.key
+
+# 2. Python Environments & Caches
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# 3. dbt (Data Build Tool) Artifacts
+voltstream_transform/target/
+voltstream_transform/dbt_packages/
+voltstream_transform/logs/
+voltstream_transform/dbt_modules/
+
+# 4. Local Data & Database Volumes
+# (In case you ever mount MinIO or LocalStack to a local folder)
+data/
+minio_data/
+*.json
+*.csv
+
+# 5. OS Generated Files
+.DS_Store
+Thumbs.db

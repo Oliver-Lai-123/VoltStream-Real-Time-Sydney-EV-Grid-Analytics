@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  # 1. Local Data Lake (MinIO)
+  minio:
+    image: minio/minio:latest
+    container_name: voltstream-minio
+    ports:
+      - "9000:9000"   # API Port
+      - "9001:9001"   # Web UI Console
+    environment:
+      MINIO_ROOT_USER: "admin"
+      MINIO_ROOT_PASSWORD: "password123"
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+
+  # 1b. Helper: Automatically creates the MinIO bucket on startup
+  minio-init:
+    image: minio/mc:latest
+    container_name: voltstream-minio-init
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      sleep 5;
+      mc alias set localminio http://minio:9000 admin password123;
+      mc mb localminio/sydney-ev-raw || true;
+      exit 0;
+      "
+
+  # 2. AWS Emulator (LocalStack)
+  localstack:
+    image: localstack/localstack:3.4.0
+    container_name: voltstream-localstack
+    ports:
+      - "4566:4566"   # Main Gateway Port
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - localstack_data:/var/lib/localstack
+
+  # 3. Python Development Environment
+  python-env:
+    build: ./ingestor
+    container_name: voltstream-python
+    depends_on:
+      - minio
+      - localstack
+    environment:
+      # MinIO Config
+      - MINIO_ENDPOINT=http://minio:9000
+      - MINIO_ACCESS_KEY=admin
+      - MINIO_SECRET_KEY=password123
+      # LocalStack Config
+      - AWS_ENDPOINT_URL=http://localstack:4566
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - AWS_DEFAULT_REGION=ap-southeast-2
+    volumes:
+      - ./ingestor:/app  # Live-syncs your local code into the container
+    command: tail -f /dev/null  # Keeps container alive for manual execution
+
+volumes:
+  minio_data:
+  localstack_data:

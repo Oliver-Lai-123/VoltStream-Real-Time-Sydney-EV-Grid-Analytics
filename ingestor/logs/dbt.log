@@ -1,0 +1,58 @@
+[0m12:50:26.553137 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77836ba69d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77836ba68f90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77836ba6afd0>]}
+
+
+============================== 12:50:26.560222 | 4f9b28f5-ea8a-41d3-9b2a-fb201d96988f ==============================
+[0m12:50:26.560222 [info ] [MainThread]: Running with dbt=1.11.8
+[0m12:50:26.562196 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt init voltstream_transform', 'cache_selected_only': 'False', 'version_check': 'True', 'static_parser': 'True', 'log_cache_events': 'False', 'target_path': 'None', 'indirect_selection': 'eager', 'fail_fast': 'False', 'write_json': 'True', 'warn_error': 'None', 'debug': 'False', 'use_experimental_parser': 'False', 'use_colors': 'True', 'partial_parse': 'True', 'profiles_dir': '/root/.dbt', 'send_anonymous_usage_stats': 'True', 'empty': 'None', 'printer_width': '80', 'quiet': 'False', 'log_path': 'logs', 'introspect': 'True', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_format': 'default'}
+[0m12:50:26.571137 [info ] [MainThread]: Creating dbt configuration folder at /root/.dbt
+[0m12:50:26.576247 [debug] [MainThread]: Starter project path: /usr/local/lib/python3.11/site-packages/dbt/include/starter_project
+[0m12:50:27.266089 [info ] [MainThread]: 
+Your new dbt project "voltstream_transform" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:50:27.269216 [info ] [MainThread]: Setting up your profile.
+[0m12:50:44.376621 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m12:50:44.383630 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m12:50:44.387864 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m12:52:43.397448 [info ] [MainThread]: Profile voltstream_transform written to /root/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m12:52:43.405143 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 136.91045, "process_in_blocks": "89880", "process_kernel_time": 1.8727, "process_mem_max_rss": "174004", "process_out_blocks": "2736", "process_user_time": 1.700592}
+[0m12:52:43.408718 [debug] [MainThread]: Command `dbt init` succeeded at 12:52:43.408435 after 136.91 seconds
+[0m12:52:43.410979 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77836ba62890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77836c8a7090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77836bc45ad0>]}
+[0m12:52:43.413226 [debug] [MainThread]: Flushing usage events
+[0m12:52:44.363809 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:56:53.550346 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7baf5c77c2d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7baf5c77d250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7baf5c777190>]}
+
+
+============================== 12:56:53.567871 | c1cd15c6-32f3-458a-82c2-15307949f6d1 ==============================
+[0m12:56:53.567871 [info ] [MainThread]: Running with dbt=1.11.8
+[0m12:56:53.572748 [debug] [MainThread]: running dbt with arguments {'log_path': 'logs', 'write_json': 'True', 'no_print': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'static_parser': 'True', 'use_experimental_parser': 'False', 'quiet': 'False', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'None', 'invocation_command': 'dbt init voltstream_transform', 'cache_selected_only': 'False', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': '/root/.dbt', 'fail_fast': 'False', 'log_cache_events': 'False', 'log_format': 'default', 'printer_width': '80', 'debug': 'False'}
+[0m12:56:53.611375 [info ] [MainThread]: A project called voltstream_transform already exists here.
+[0m12:56:53.614826 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 0.14369065, "process_in_blocks": "98968", "process_kernel_time": 0.247201, "process_mem_max_rss": "105132", "process_out_blocks": "8", "process_user_time": 1.076795}
+[0m12:56:53.617075 [debug] [MainThread]: Command `dbt init` succeeded at 12:56:53.616872 after 0.15 seconds
+[0m12:56:53.619276 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7baf5c784bd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7baf5c5e3610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7baf6119ce10>]}
+[0m12:56:53.622769 [debug] [MainThread]: Flushing usage events
+[0m12:56:54.507334 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:01:36.829122 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x76ef84edc510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x76ef84ed7b10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x76ef84edd310>]}
+
+
+============================== 13:01:36.832807 | c6d80995-250c-4272-b750-51219cdda0cb ==============================
+[0m13:01:36.832807 [info ] [MainThread]: Running with dbt=1.11.8
+[0m13:01:36.835973 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'version_check': 'True', 'cache_selected_only': 'False', 'indirect_selection': 'eager', 'use_colors': 'True', 'send_anonymous_usage_stats': 'True', 'debug': 'False', 'log_format': 'default', 'static_parser': 'True', 'warn_error': 'None', 'fail_fast': 'False', 'write_json': 'True', 'printer_width': '80', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'profiles_dir': '/root/.dbt', 'empty': 'None', 'introspect': 'True', 'partial_parse': 'True', 'target_path': 'None', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': 'logs', 'invocation_command': 'dbt init voltstream_transform'}
+[0m13:01:36.848067 [info ] [MainThread]: A project called voltstream_transform already exists here.
+[0m13:01:36.850269 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 0.069852725, "process_in_blocks": "0", "process_kernel_time": 0.147882, "process_mem_max_rss": "105504", "process_out_blocks": "0", "process_user_time": 0.883298}
+[0m13:01:36.852001 [debug] [MainThread]: Command `dbt init` succeeded at 13:01:36.851890 after 0.07 seconds
+[0m13:01:36.853667 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x76ef84ee4bd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x76ef84d63f90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x76ef84d63fd0>]}
+[0m13:01:36.855314 [debug] [MainThread]: Flushing usage events
+[0m13:01:37.749784 [debug] [MainThread]: An error was encountered while trying to flush usage events
